@@ -54,6 +54,9 @@ function safeQuerySelector(selector: string): boolean {
  * @returns {DeviceType.DESKTOP | DeviceType.MOBILE} The detected device type
  */
 export function getDeviceType(): DeviceType {
+    // Clear cache for debugging - remove this line in production
+    cachedDeviceType = null;
+    
     // Return cached result if available
     if (cachedDeviceType !== null) {
         return cachedDeviceType;
@@ -161,6 +164,9 @@ export function getDeviceType(): DeviceType {
         mobileScore -= 3;
     }
 
+    // Debug logging - remove in production
+    console.log('Mobile Score:', mobileScore, 'Threshold:', CONFIDENCE_THRESHOLD, 'Result:', mobileScore >= CONFIDENCE_THRESHOLD ? 'MOBILE' : 'DESKTOP');
+    
     // Cache and return the result
     cachedDeviceType = mobileScore >= CONFIDENCE_THRESHOLD ? DeviceType.MOBILE : DeviceType.DESKTOP;
     return cachedDeviceType;
