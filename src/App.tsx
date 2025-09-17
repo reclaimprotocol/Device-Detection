@@ -1,6 +1,6 @@
 'use client'
 import  { useEffect, useState } from 'react'
-import { getDeviceType, getMobileDeviceType, isMobileDevice, isDesktopDevice } from '@reclaimprotocol/js-sdk'
+import { getDeviceType, getMobileDeviceType, isMobileDevice, isDesktopDevice } from './device'
 
 interface DebugInfo {
   detection: {
