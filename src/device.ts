@@ -72,7 +72,7 @@ export function getDeviceType(): DeviceType {
     // Screen dimensions
     const screenWidth = window.innerWidth || window.screen?.width || 0;
     const screenHeight = window.innerHeight || window.screen?.height || 0;
-    const hasSmallScreen = screenWidth <= 768 || screenHeight <= 768;
+    const hasSmallScreen = screenWidth <= 480 || screenHeight <= 480;
     const hasLargeScreen = screenWidth > 1024 && screenHeight > 768;
     
     // Touch capabilities
@@ -153,6 +153,12 @@ export function getDeviceType(): DeviceType {
     // Can hover with precise pointer = has real mouse (-2 points)
     if (hasPreciseMouse && canHover) {
         mobileScore -= 2;
+    }
+    
+    // Windows user agent = strong desktop indicator (-3 points)
+    const isWindowsDesktop = /Windows/i.test(userAgent) && !hasMobileUserAgent;
+    if (isWindowsDesktop) {
+        mobileScore -= 3;
     }
 
     // Cache and return the result

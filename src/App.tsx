@@ -63,7 +63,7 @@ export default function App() {
       // Screen info
       const screenWidth = window.innerWidth || window.screen?.width || 0
       const screenHeight = window.innerHeight || window.screen?.height || 0
-      const isSmallScreen = screenWidth <= 768 || screenHeight <= 768
+      const isSmallScreen = screenWidth <= 480 || screenHeight <= 480
       const isLargeScreen = screenWidth > 1024 && screenHeight > 768
 
       // Touch detection
@@ -343,7 +343,7 @@ export default function App() {
                 <span className="text-sm font-medium text-gray-900">{debugInfo.scoring.screenSize}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b">
-                <span className="text-sm text-gray-600">Small Screen (≤768px)</span>
+                <span className="text-sm text-gray-600">Small Screen (≤480px)</span>
                 <span className={`text-sm font-medium ${getStatusColor(debugInfo.scoring.isSmallScreen)}`}>
                   {debugInfo.scoring.isSmallScreen ? 'Yes' : 'No'}
                 </span>
